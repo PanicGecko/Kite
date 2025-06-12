@@ -3,7 +3,7 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/PanicGecko/Kite">
     <img src="images/KiteLogo.png" alt="Logo" width="400" height="200">
   </a>
 
