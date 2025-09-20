@@ -1,0 +1,5 @@
+service/RpcImageService.class
+service/RpcChatService.class
+service/RpcVoiceService.class
+service/RpcTokenService.class
+service/RpcUserService.class

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserMapper">
+
+    <select id="doLogin" resultType="pojo.User" parameterType="vo.LoginUserVO">
+        select userId,username,password,firstName,lastName,email,lastOnline from user where username =#{username} AND password =#{password}
+    </select>
+
+    <select id="getInsertId" resultType="int">
+        select LAST_INSERT_ID();
+    </select>
+
+    <insert id="createUser" parameterType="vo.CreateUserVO" useGeneratedKeys="true" keyProperty="userId" >
+        insert into user (username, password, firstName, lastName, birth, email) values (#{username}, #{password}, #{firstName}, #{lastName}, #{birth}, #{email})
+    </insert>
+
+    <select id="searchUsername" resultType="Integer" parameterType="String">
+        select count(*) from user where username = #{username}
+    </select>
+
+    <select id="searchEmail" resultType="Integer" parameterType="String">
+        select count(*) from user where email = #{email}
+    </select>
+
+    <select id="getIdbyUsername" parameterType="String" resultType="Integer">
+        select userId from user where username = #{username}
+    </select>
+    
+    <select id="getUserbyInput" resultType="vo.UserVO" parameterType="vo.SearchVO">
+        select userId, username from user where username like '%${search}%' and userId != #{userId} limit 5
+    </select>
+
+    <update id="setOffline">
+        UPDATE user SET lastOnline = #{arg1} WHERE userId = #{arg0}
+    </update>
+
+    <select id="getLastOnline" resultType="java.sql.Timestamp" parameterType="Integer">
+        select lastOnline from user where userId = #{userId}
+    </select>
+
+    <select id="getUsernameById" resultType="String" parameterType="Integer">
+        select username from user where userId = #{userId}
+    </select>
+
+</mapper>

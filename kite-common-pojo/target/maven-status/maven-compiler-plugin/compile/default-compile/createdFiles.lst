@@ -1,0 +1,7 @@
+exception/kiteException.class
+pojo/Chat.class
+pojo/Message.class
+pojo/Message_v2.class
+pojo/MessageVO_v2.class
+pojo/UserDetails.class
+pojo/User.class
